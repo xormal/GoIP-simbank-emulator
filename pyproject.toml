@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goip-simbank-remote-sim"
+version = "0.1.0"
+description = "DBLTEK GoIP SIMBank protocol notes and a remote-SIM emulator backed by PC/SC readers."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Alexander Romanoff"}
+]
+dependencies = [
+  "pyscard>=2.0.10"
+]
+keywords = ["goip", "simbank", "pcsc", "remote-sim", "apdu"]
+
+[project.scripts]
+goip-sim-server = "goip_simbank.goip_sim_server:main"
+goip-sim-server-full = "goip_simbank.goip_sim_server_full:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

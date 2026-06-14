@@ -1,0 +1,41 @@
+[Unit]
+Description=GoIP Remote SIM server (FULL emulation: multi-reader + SMB auth)
+After=network-online.target pcscd.service
+Wants=network-online.target pcscd.service
+# NOTE: do not run together with goip-sim-server.service — they both bind :56012
+# and contend for the PC/SC reader(s). Enable only one.
+Conflicts=goip-sim-server.service
+
+[Service]
+Type=simple
+User=goip-sim
+WorkingDirectory=/opt/goip-simbank-remote-sim-emulator
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-/etc/goip-simbank/goip-sim-server-full.env
+# --- SMB auth settings (example values; replace for your own lab) ---
+# GoIP->SIMBank: line_id = SMB_ID*100 + slot ; blob/token = MD5(SMB_KEY + str(N) + hex(line_id))
+Environment=GOIP_SMB_ID=1001
+Environment=GOIP_SMB_KEY=lab-smb-key
+# SIMBank->GoIP MAC key (0x00C9 + S->G APDU): MD5(SCHE_SMB_KEY + str(seq) + hex(X)).
+# X = seq for 0x00C9 ; X = local_id = SCHE_SMB_ID*1000 + slot for S->G APDU.
+Environment=GOIP_SCHE_SMB_KEY=lab-sche-key
+Environment=GOIP_SCHE_SMB_ID=200
+# Emit firmware-compatible S->G APDU blobs (1, default). 0 = echo fallback.
+Environment=GOIP_SIGN_BLOBS=1
+# Validate the GoIP login token / per-message blobs against SMB_KEY (0=off).
+Environment=GOIP_STRICT_AUTH=0
+# --- multi-reader map: slot=reader (PC/SC index or name substring) ---
+# One real SIM per GoIP channel. Examples:
+#   "1=0"                       single reader (default)
+#   "1=0,2=1,3=2"               three readers by index
+#   "1=OMNIKEY,2=Identive"      by reader-name substring
+Environment=GOIP_READER_MAP=1=0
+# ATR delay (s) after card reset before pushing ATR. REQUIRED for full auth
+# (the GoIP modem rejects an instant ATR). Default 6; tune to find the minimum.
+Environment=GOIP_ATR_DELAY=6
+ExecStart=/opt/goip-simbank-remote-sim-emulator/.venv/bin/goip-sim-server-full
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
