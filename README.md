@@ -74,3 +74,10 @@ Read [Telnet Access Notes](docs/telnet-access.en.md) for the optional
 
 This project is intended for interoperability research and for devices, SIMs,
 and networks you own or are authorized to administer.
+
+## License
+
+This repository is source-available for personal, educational, research,
+interoperability, and other non-commercial use. Commercial use requires prior
+permission from the author; contact the repository owner through GitHub.
+Illegal or unauthorized use is prohibited. See [LICENSE](LICENSE).

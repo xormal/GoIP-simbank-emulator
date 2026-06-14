@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "DBLTEK GoIP SIMBank protocol notes and a remote-SIM emulator backed by PC/SC readers."
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = {text = "Source-available non-commercial license"}
 authors = [
   {name = "Alexander Romanoff"}
 ]

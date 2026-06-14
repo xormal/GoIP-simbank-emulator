@@ -1,21 +1,78 @@
-MIT License
+GoIP SIMBank Emulator Source-Available Non-Commercial License 1.0
 
 Copyright (c) 2026 Alexander Romanoff
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files (the "Software") to use, read,
+copy, modify, and distribute the Software solely for personal, educational,
+research, interoperability, and other non-commercial purposes, subject to the
+conditions below.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Non-Commercial Use Only
+
+The Software may not be used, sold, licensed, hosted, embedded, integrated,
+distributed, or otherwise exploited for commercial purposes without prior
+written permission from the copyright holder.
+
+Commercial purposes include, but are not limited to:
+
+- selling or licensing the Software or derivative works;
+- offering hosted, managed, consulting, integration, telecom, gateway, SIMBank,
+  remote-SIM, or security services based on the Software;
+- using the Software in paid products, paid internal tooling, revenue-generating
+  operations, or customer deployments;
+- using the Software to support commercial telecom routing, SIM hosting,
+  call-termination, messaging, or gateway operations.
+
+For commercial licensing, contact the author through GitHub messages or another
+GitHub-visible contact channel associated with the repository owner.
+
+2. Legal and Authorized Use Only
+
+The Software may not be used for any activity prohibited by applicable law,
+regulation, contract, telecom rule, export-control rule, or third-party rights.
+
+Prohibited uses include, but are not limited to:
+
+- unauthorized access to devices, SIM cards, gateways, networks, or accounts;
+- bypassing access controls on systems you do not own or administer with
+  explicit permission;
+- telecom fraud, SIM abuse, unauthorized call routing, unauthorized messaging,
+  interception, identity abuse, credential theft, or evasion of lawful billing,
+  compliance, or regulatory controls;
+- distribution of real subscriber identifiers, production credentials, device
+  serial numbers, private IP layouts, or other confidential operational data
+  without authorization.
+
+3. Attribution and Notices
+
+All copies or substantial portions of the Software must include this license
+notice and the copyright notice above.
+
+Modified versions must not imply endorsement by the copyright holder unless
+explicit written permission has been granted.
+
+4. No Trademark Rights
+
+This license does not grant rights to use the names, logos, or trademarks of
+the copyright holder or any device/vendor/operator names referenced by the
+Software or documentation.
+
+5. No Warranty
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, SECURITY, RELIABILITY, OR
+COMPLIANCE WITH ANY TELECOM, EXPORT, PRIVACY, OR OTHER REGULATORY REQUIREMENT.
+
+IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+
+6. Termination
+
+Any permission granted by this license terminates automatically if you violate
+its terms. Upon termination, you must stop using and distributing the Software
+and delete or destroy all copies under your control, unless a separate written
+license from the copyright holder allows otherwise.
