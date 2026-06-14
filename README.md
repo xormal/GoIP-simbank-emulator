@@ -18,6 +18,17 @@ After a couple of evenings with the firmware, I implemented the emulator as
 `goip_sim_server_full.py`. It speaks the SIMBank TCP framing, signs the relevant
 messages, handles reset/ATR timing, and relays ISO 7816 APDUs to PC/SC readers.
 
+## No Affiliation
+
+This project is independent and is not affiliated with, endorsed by, sponsored
+by, or approved by Hybertone, DBL, DBLtek, DBLTEK, or any related vendor.
+Product and company names are used only to identify hardware/protocol
+compatibility. All trademarks belong to their respective owners.
+
+The protocol notes and emulator implementation are original, author-led
+interoperability research. They are not vendor-provided documentation, not
+vendor-authorized source code, and not a vendor-supported product.
+
 ## Repository Layout
 
 - `src/goip_simbank/goip_sim_server_full.py` - full multi-reader SIMBank emulator with SMB authentication.
