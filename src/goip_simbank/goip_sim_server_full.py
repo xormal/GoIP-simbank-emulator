@@ -486,17 +486,39 @@ class FullGoipSimServer:
             self.sign_blobs, self.strict_auth,
             {s: self.engines[s].card.reader_index for s in sorted(self.engines)},
         )
-        server = await asyncio.start_server(self.handle_client, self.host, self.port)
+        stop = asyncio.Event()
+        clients: dict[asyncio.Task[None], asyncio.StreamWriter] = {}
+
+        def client_connected(reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
+            if stop.is_set():
+                writer.transport.abort()
+                return
+            task = asyncio.create_task(self.handle_client(reader, writer))
+            clients[task] = writer
+            task.add_done_callback(clients.pop)
+
+        server = await asyncio.start_server(client_connected, self.host, self.port)
         sockets = ", ".join(str(s.getsockname()) for s in server.sockets or [])
         logging.info("listening on %s", sockets)
 
         loop = asyncio.get_running_loop()
-        stop = asyncio.Event()
-        for sig in (signal.SIGINT, signal.SIGTERM):
+        stop_signals = (signal.SIGINT, signal.SIGTERM)
+        for sig in stop_signals:
             loop.add_signal_handler(sig, stop.set)
-        async with server:
+        try:
             await stop.wait()
-        logging.info("stopping")
+        finally:
+            logging.info("stopping")
+            stop.set()
+            server.close()
+            # An open GoIP session can keep wait_closed() pending indefinitely.
+            for task, writer in clients.items():
+                writer.transport.abort()
+                task.cancel()
+            await asyncio.gather(*clients, return_exceptions=True)
+            await server.wait_closed()
+            for sig in stop_signals:
+                loop.remove_signal_handler(sig)
 
 
 def env_flag(name: str, default: str) -> bool:
